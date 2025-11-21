@@ -1,0 +1,92 @@
+/* src/index.css - خطوط رئيسية وأنيميشن */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap');
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+}
+
+/* عامة */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mini Sidebar transitions */
+.app-drawer {
+  transition: width 300ms cubic-bezier(.2,.8,.2,1);
+  overflow: hidden;
+}
+
+/* collapsed state */
+.app-drawer.collapsed {
+  width: 72px !important;
+}
+
+/* expanded state */
+.app-drawer.expanded {
+  width: 260px !important;
+}
+
+/* list item button style */
+.app-list-item {
+  transition: background-color 200ms, padding 200ms;
+}
+
+/* icon pulse animation (subtle) */
+@keyframes iconPulse {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-2px) scale(1.02); opacity: 0.95; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.app-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: none;
+  transition: transform 180ms;
+}
+
+/* عند hover يشتغل الأنيميشن */
+.app-list-item:hover .app-icon,
+.app-icon.animated {
+  animation: iconPulse 900ms ease-in-out;
+  transform-origin: center;
+}
+
+/* نص القائمة */
+.app-list-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* small helper when collapsed hide text */
+.app-drawer.collapsed .app-list-text {
+  display: none;
+}
+
+/* main content transition */
+.main-content {
+  transition: margin-right 300ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* when drawer collapsed, shift content */
+.main-content.shifted {
+  margin-right: 72px;
+}
+
+/* Tooltip-ish for collapsed menu (simple) */
+.app-drawer.collapsed .menu-item-tooltip {
+  display: none;
+}
+
+/* add a subtle card style like govt dashboards */
+.gov-card {
+  border-radius: 8px;
+  background-clip: padding-box;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.24);
+}
